@@ -21,9 +21,9 @@ def config_parser(config_file,parameters):	# Function to take config file and cr
         config_file: string object that corresponds to the local or global position of the config file to be used for this analysis.
     
     """
-    necessary_parameters = ['output_directory','visualization_functions_file','pdb_list','selection','dx_output_file_name']
+    necessary_parameters = ['output_directory','dx_output_file_name','visualization_functions_file','selection','pdb_list']
 
-    all_parameters = ['output_directory','visualization_functions_file','pdb_list','selection','dx_output_file_name','summary_boolean','dx_delta']
+    all_parameters = ['output_directory','dx_output_file_name','visualization_functions_file','selection','pdb_list','dx_delta','summary_boolean','other_cv','user_functions_file','cv_type','cv_file_name']
 
     for i in range(len(necessary_parameters)):
         parameters[necessary_parameters[i]] = ''
