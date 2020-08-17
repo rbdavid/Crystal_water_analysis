@@ -1,0 +1,15 @@
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+#addAtomTypes { { "ZN" "Zn" "sp3" } { "S1" "S" "sp3" } }
+#loadamberprep ../ZAFF.prep
+#loadamberparams ../ZAFF.frcmod
+x = loadpdb 6WX4_chain_D_aligned_6WX4.pdb
+#bond x.189.SG x.321.ZN
+#bond x.192.SG x.321.ZN
+#bond x.224.SG x.321.ZN
+#bond x.226.SG x.321.ZN
+setBox x "centers"
+charge x
+savepdb x protonated.pdb
+saveamberparm x protonated.prmtop protonated.inpcrd
+quit

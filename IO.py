@@ -10,7 +10,7 @@ import sys
 # ----------------------------------------
 # FUNCTIONS: 
 # ----------------------------------------
-def config_parser(config_file,parameters):	# Function to take config file and create/fill the parameter dictionary 
+def dx_config_parser(config_file,parameters):	# Function to take config file and create/fill the parameter dictionary 
     """ Function to take config file and create/fill the parameter dictionary (created before function call). 
     
     Usage: 
@@ -45,6 +45,65 @@ def config_parser(config_file,parameters):	# Function to take config file and cr
             print('%s has not been assigned a value. This variable is necessary for the script to run. Please declare this variable within the config file.' %(key))
             sys.exit()
 
+def crystal_config_parser(config_file,parameters):	# Function to take config file and create/fill the parameter dictionary 
+    """ Function to take config file and create/fill the parameter dictionary (created before function call). 
+    
+    Usage: 
+        parameters = {}     # initialize the dictionary to be filled with keys and values
+        config_parser(config_file,parameters)
+    
+    Arguments:
+        config_file: string object that corresponds to the local or global position of the config file to be used for this analysis.
+    
+    """
+    necessary_parameters = ['pdb','selection','output_file_name']
+
+    all_parameters = ['pdb','selection','output_file_name','change_resnames']
+
+    for i in range(len(necessary_parameters)):
+        parameters[necessary_parameters[i]] = ''
+
+    # SETTING DEFAULT PARAMETERS FOR OPTIONAL PARAMETERS:
+    parameters['change_resnames'] = None
+
+    # GRABBING PARAMETER VALUES FROM THE CONFIG FILE:
+    with open(config_file) as f:
+        exec(compile(f.read(),config_file,'exec'),parameters)
+
+    for key, value in list(parameters.items()):
+        if value == '':
+            print('%s has not been assigned a value. This variable is necessary for the script to run. Please declare this variable within the config file.' %(key))
+            sys.exit()
+
+def structure_config_parser(config_file,parameters):	# Function to take config file and create/fill the parameter dictionary 
+    """ Function to take config file and create/fill the parameter dictionary (created before function call). 
+    
+    Usage: 
+        parameters = {}     # initialize the dictionary to be filled with keys and values
+        config_parser(config_file,parameters)
+    
+    Arguments:
+        config_file: string object that corresponds to the local or global position of the config file to be used for this analysis.
+    
+    """
+    necessary_parameters = ['output_file_name','alignment_pdb','alignment_landmark','prmtop','nc','mobile_landmark','selection','dx_files','dx_booleans','summary_boolean']
+
+    all_parameters = ['output_file_name','alignment_pdb','alignment_landmark','prmtop','nc','mobile_landmark','selection','dx_files','dx_booleans','summary_boolean']
+
+    for i in range(len(necessary_parameters)):
+        parameters[necessary_parameters[i]] = ''
+
+    # SETTING DEFAULT PARAMETERS FOR OPTIONAL PARAMETERS:
+
+    # GRABBING PARAMETER VALUES FROM THE CONFIG FILE:
+    with open(config_file) as f:
+        exec(compile(f.read(),config_file,'exec'),parameters)
+
+    for key, value in list(parameters.items()):
+        if value == '':
+            print('%s has not been assigned a value. This variable is necessary for the script to run. Please declare this variable within the config file.' %(key))
+            sys.exit()
+
 def summary(summary_file_name,arguments,parameters):
     """ Function to create a text file that holds important information about the analysis that was just performed. Outputs the version of MDAnalysis, how to rerun the analysis, and the parameters used in the analysis.
     
@@ -55,7 +114,7 @@ def summary(summary_file_name,arguments,parameters):
         summary_file_name: string object of the file name to be written that holds the summary information.
     
     """
-    with open(summary_file_name,'w') as f:
+    with open(summary_file_name,'a') as f:
         f.write('Using MDAnalysis version: %s\n' %(MDAnalysis.version.__version__))
         f.write('To recreate this analysis, run this line:\n')
         for i in range(len(arguments)):

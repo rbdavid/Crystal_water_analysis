@@ -1,0 +1,17 @@
+General minimization protocol; restrained all heavy atoms; 20 kcal mol-1 AA-2 restraint
+ &cntrl
+  imin=1,
+  ntx=1,
+  irest=0,
+  ntpr=100,
+  ntwx=100,
+  ioutfm=1,
+  ntb=1,
+  iwrap=1,
+  maxcyc=2500,
+  ncyc=500,
+  cut=12.0,
+  ntr=1,
+  restraint_wt=75,
+  restraintmask="!(@H=)",
+ /

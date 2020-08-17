@@ -1,0 +1,93 @@
+-I: Adding /home/rbdavid/Apps/amber20/dat/leap/prep to search path.
+-I: Adding /home/rbdavid/Apps/amber20/dat/leap/lib to search path.
+-I: Adding /home/rbdavid/Apps/amber20/dat/leap/parm to search path.
+-I: Adding /home/rbdavid/Apps/amber20/dat/leap/cmd to search path.
+-s: Ignoring startup file: leaprc
+-f: Source temp.in.
+
+Welcome to LEaP!
+Sourcing: ./temp.in
+----- Source: /home/rbdavid/Apps/amber20/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of /home/rbdavid/Apps/amber20/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /home/rbdavid/Apps/amber20/dat/leap/lib/amino12.lib
+Loading library: /home/rbdavid/Apps/amber20/dat/leap/lib/aminoct12.lib
+Loading library: /home/rbdavid/Apps/amber20/dat/leap/lib/aminont12.lib
+----- Source: /home/rbdavid/Apps/amber20/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/rbdavid/Apps/amber20/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/rbdavid/Apps/amber20/dat/leap/lib/atomic_ions.lib
+Loading library: /home/rbdavid/Apps/amber20/dat/leap/lib/solvents.lib
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/frcmod.ions1lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of monovalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/rbdavid/Apps/amber20/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+Loading PDB file: ./6WX4_chain_D_aligned_6WX4.pdb
+ (starting new molecule for chain D)
+ (starting new molecule for chain E)
+  Added missing heavy atom: .R<CHIE 320>.A<OXT 18>
+  total atoms in file: 2739
+  Leap added 2878 missing atoms according to residue templates:
+       1 Heavy
+       2877 H / lone pairs
+Box dimensions:  56.887853 43.154849 94.141230
+Total unperturbed charge:   1.000000
+Total perturbed charge:     1.000000
+Writing pdb file: protonated.pdb
+   printing CRYST1 record to PDB file with box info
+
+/home/rbdavid/Apps/amber20/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NGLU -> GLU
+
+/home/rbdavid/Apps/amber20/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CHIE -> HIE
+Checking Unit.
+
+/home/rbdavid/Apps/amber20/bin/teLeap: Warning!
+The unperturbed charge of the unit (1.000000) is not zero.
+
+/home/rbdavid/Apps/amber20/bin/teLeap: Note.
+Ignoring the warning from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 1035 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CHIE	1
+	NGLU	1
+	WAT	194
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 3; Notes = 1.
