@@ -60,10 +60,10 @@ def create_dx(node_traj_data,node_traj_weights,delta,dx_file_name,cv_data=[],cv_
         print_able_data = weighted_flattened_space[:-(nBins%3)]
         reshaped = np.reshape(print_able_data, (int(len(weighted_flattened_space)/3),3))
         append_able_data = weighted_flattened_space[-(nBins%3):]
-        # origin not shifted by half delta...
-        np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
-        ## origin shifted by half delta...
-        #np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
+        ## origin not shifted by half delta...
+        #np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
+        # origin shifted by half delta...
+        np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
         with open(dx_file_name,'a') as W:
             if nBins%3 == 2:
                 W.write('%.18e %.18e\nobject "density (all) [A^-3]" class field'%(append_able_data[0],append_able_data[1]))
@@ -74,10 +74,10 @@ def create_dx(node_traj_data,node_traj_weights,delta,dx_file_name,cv_data=[],cv_
             print_able_data = flattened_cv[:-(nBins%3)]
             reshaped = np.reshape(print_able_data,(int(len(flattened_cv)/3),3))
             append_able_data = flattened_cv[-(nBins%3):]
-            # origin not shifted by half delta...
-            np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
-            ## origin shifted by half delta...
-            #np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
+            ## origin not shifted by half delta...
+            #np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
+            # origin shifted by half delta...
+            np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins))    #,footer='object "density (all) [A^-3]" class field'
             with open(cv_file_name,'a') as W:
                 if nBins%3 == 2:
                     W.write('%.18e %.18e\nobject "density (all) [A^-3]" class field'%(append_able_data[0],append_able_data[1]))
@@ -86,17 +86,17 @@ def create_dx(node_traj_data,node_traj_weights,delta,dx_file_name,cv_data=[],cv_
     else:
         # deal with space
         reshaped = np.reshape(weighted_flattened_space, (int(len(weighted_flattened_space)/3),3))
-        # origin not shifted by half delta...
-        np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
-        ## origin shifted by half delta...
-        #np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
+        ## origin not shifted by half delta...
+        #np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
+        # origin shifted by half delta...
+        np.savetxt(dx_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
         # deal with cv
         if cv_data != []:
             reshaped = np.reshape(flattened_cv, (int(len(flattened_cv)/3),3))
-            # origin not shifted by half delta...
-            np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
-            ## origin shifted by half delta...
-            #np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
+            ## origin not shifted by half delta...
+            #np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0],y_edges[0],z_edges[0],delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
+            # origin shifted by half delta...
+            np.savetxt(cv_file_name,reshaped,comments='',header='object 1 class gridpositions counts %d %d %d\norigin %.18e %.18e %.18e\ndelta %.18e 0 0\ndelta 0 %.18e 0\ndelta 0 0 %.18e\nobject 2 class gridconnections counts %d %d %d\nobject 3 class array type double rank 0 items %d data follows'%(x_bins,y_bins,z_bins,x_edges[0]+delta/2.,y_edges[0]+delta/2.,z_edges[0]+delta/2.,delta,delta,delta,x_bins,y_bins,z_bins,nBins),footer='object "density (all) [A^-3]" class field')
     
     return half_max_counts
 

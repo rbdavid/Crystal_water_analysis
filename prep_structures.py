@@ -69,9 +69,9 @@ def main():
                 print('Something with %s is messed up. Killing job.'%(dx_file))
                 sys.exit()
             
-            real_origin = [origin[0],origin[1],origin[2]]
-            ## fixing the origin values because of manipulation during creation of the dx file; VMD weirdness while drawing isosurfaces...
-            #real_origin = [origin[0]-delta[0]/2.,origin[1]-delta[1]/2.,origin[2]-delta[2]/2.]
+            #real_origin = [origin[0],origin[1],origin[2]]
+            # fixing the origin values because of manipulation during creation of the dx file; VMD weirdness while drawing isosurfaces...
+            real_origin = [origin[0]-delta[0]/2.,origin[1]-delta[1]/2.,origin[2]-delta[2]/2.]
             
             x_edges = np.array([real_origin[0]+i*delta[0] for i in range(nBins[0]+1)])
             y_edges = np.array([real_origin[1]+i*delta[1] for i in range(nBins[1]+1)])
